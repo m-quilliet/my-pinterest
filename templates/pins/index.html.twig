@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Find all the best pins on earth!'%}
+
+{% block body %}
+{# // afficher le nombre de pin avec le filtre lenght #}
+    <h1>{{pluralize(pins|length, 'Pin') }}</h1>
+{# // on va parcourir notre tableau et pr chaque pin on va créé un article #}
+    {% for pin in pins%}
+        <article>
+        {# //twig appel les getteurs #}
+            <h2>{{pin.title}}</h2>
+            <p>{{pin.description}} </p>
+        </article>
+    {% endfor %}
+{% endblock %}
