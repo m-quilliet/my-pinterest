@@ -18,4 +18,9 @@ app_pins_edit:
   controller: App\Controller\PinsController::edit
   methods: GET|PUT
 
+app_pins_delete:
+  path: /pins/{id<\d+>}/delete
+  controller: App\Controller\PinsController::delete
+  methods: POST
+
 
