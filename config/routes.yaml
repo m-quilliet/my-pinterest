@@ -3,8 +3,19 @@ app_home:
     controller: App\Controller\PinsController::index
     methods: GET
 
+app_pins_create:
+    path: /pins/create
+    controller: App\Controller\PinsController::create
+    methods: GET|POST
+
 app_pins_show:
   path: /pins/{id<\d+>}
   controller: App\Controller\PinsController::show
+  methods: GET
+
+app_pins_edit:
+  path: /pins/{id<\d+>}/edit
+  controller: App\Controller\PinsController::edit
+  methods: GET|POST
 
 
