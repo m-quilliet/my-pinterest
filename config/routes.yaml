@@ -21,6 +21,6 @@ app_pins_edit:
 app_pins_delete:
   path: /pins/{id<\d+>}/delete
   controller: App\Controller\PinsController::delete
-  methods: POST
+  methods: POST|DELETE
 
 
