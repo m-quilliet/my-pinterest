@@ -16,6 +16,6 @@ app_pins_show:
 app_pins_edit:
   path: /pins/{id<\d+>}/edit
   controller: App\Controller\PinsController::edit
-  methods: GET|POST
+  methods: GET|PUT
 
 
