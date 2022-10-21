@@ -25,9 +25,7 @@ class PinsController extends AbstractController
     {
         $pin = new Pin;
 
-        $form = $this->createForm(PinType::class, $pin, [
-            'method' => 'PUT'
-        ])
+        $form = $this->createForm(PinType::class, $pin)
             // $form = $this->createFormBuilder($pin)
             // ->add('title', TextType::class)
             // ->add('description', TextareaType::class)
@@ -40,6 +38,8 @@ class PinsController extends AbstractController
             $pin = $form->getData();
             $em->persist($pin);
             $em->flush();
+
+            $this->addFlash('success', 'Pin ajouté avec succès !');
 
             return $this->redirectToRoute('app_home');
         }
@@ -68,6 +68,8 @@ class PinsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
+            $this->addFlash('success', 'Pin modifié avec succès !');
+
             return $this->redirectToRoute('app_home');
         }
 
@@ -82,6 +84,8 @@ class PinsController extends AbstractController
         if ($this->isCsrfTokenValid('pin_deletion_' . $pin->getId(), $request->get('csrf_token'))) {
             $em->remove($pin);
             $em->flush();
+
+            $this->addFlash('info', 'Pin supprimé avec succès !');
         }
 
         return $this->redirectToRoute('app_home');

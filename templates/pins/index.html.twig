@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 
 {% block title 'Find all the best pins on earth!'%}
 
@@ -11,7 +11,7 @@
         {# //twig appel les getteurs #}
             <h2><a href="{{ path('app_pins_show', {id: pin.id}) }}">{{pin.title}}</a></h2>
             <p>{{pin.description | u.truncate(10, '...', false )}} </p>
-            <p>Publier il y a : {{ pin.createdAt | ago }}</p>
+            <p>Publier {{ pin.createdAt | ago (locale='fr') }} .</p>
         </article>
     {% endfor %}
 {% endblock %}
