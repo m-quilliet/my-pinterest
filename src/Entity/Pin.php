@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PinRepository::class)
- * #[Vich\Uploadable]
+ * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks
  */
 class Pin
