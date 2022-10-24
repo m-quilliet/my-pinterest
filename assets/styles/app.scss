@@ -2,9 +2,11 @@
 
 @import 'shared/variables';
 
+@import "~bootstrap/scss/bootstrap";
+
+
 
 body {
-    background-color:lightgrey;
     font-family:$primary-font, sans-serif;
 }
 section {
