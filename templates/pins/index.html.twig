@@ -3,15 +3,33 @@
 {% block title 'Find all the best pins on earth!'%}
 
 {% block body %}
+    {% if pins|length > 0 %}
 {# // afficher le nombre de pin avec le filtre lenght #}
-    <h1>{{pluralize(pins|length, 'Pin') }}</h1>
-{# // on va parcourir notre tableau et pr chaque pin on va créé un article #}
-    {% for pin in pins%}
-        <article>
-        {# //twig appel les getteurs #}
-            <h2><a href="{{ path('app_pins_show', {id: pin.id}) }}">{{pin.title}}</a></h2>
-            <p>{{pin.description | u.truncate(10, '...', false )}} </p>
-            <p>Publier {{ pin.createdAt | ago (locale='fr') }} .</p>
-        </article>
-    {% endfor %}
+        <h1 class="mb-4 text-center text-muted">{{pluralize(pins|length, 'Pin') }}</h1>
+
+        {% for row in pins|batch(3) %}
+            <div class="row mb-5">
+            {# // on va parcourir notre tableau et pr chaque pin on va créé un article #}
+                {% for pin in row %}
+                    <div class="col-md-4">
+                        <article class="pin bg-white rounded shadow">
+                            <div class="mw-100 overflow-hidden">
+                                <a href="{{ path('app_pins_show', {id: pin.id}) }}">
+                                    <img src="{{ (pin.imageName ? vich_uploader_asset(pin) : 
+                                    asset('build/images/placeholder.jpeg'))|imagine_filter('squared_thumbnail_medium')}}" alt="{{ pin.title }}" class="w-100 rounded-top"/>
+                                </a>
+                            </div>
+                            {# //twig appel les getteurs #}
+                                <h2 class="h5 pl-3 pt-3"><a href="{{ path('app_pins_show', {id: pin.id}) }}" class="text-secondary text-decoration-none">{{pin.title}}</a></h2>
+                                {# <p>Publier {{ pin.createdAt | ago (locale='fr') }} .</p> #}
+                                <p class="pl-3 pb-3 text-muted "><small>Submitted [OWNER FULL NAME]</small></p>
+                        </article>
+                    </div>
+                {% endfor %}    
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p class="h1 mt-5 text-center">Pas d'épingle pour le moment. <a href="{{ path('app_pins_create') }}">Soit le premier!</a></p>
+    {% endif %}
 {% endblock %}
