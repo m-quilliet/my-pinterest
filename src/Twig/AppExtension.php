@@ -21,7 +21,7 @@ class AppExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('pluralize', [$this, 'pluralize']),
+            new TwigFunction('pluralize', [$this, 'doSomething']),
         ];
     }
 
