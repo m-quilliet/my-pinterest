@@ -20,6 +20,9 @@ class Pin
 {
     use Timestampable;
 
+    // to do : pagination
+    // public const NUM_ITEMS_PER_PAGE = 15;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

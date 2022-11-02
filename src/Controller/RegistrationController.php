@@ -58,7 +58,10 @@ class RegistrationController extends AbstractController
                 'app_verify_email',
                 $user,
                 (new TemplatedEmail())
-                    ->from(new Address('noreply@my-pinterest.com', 'my-pinterest'))
+                    ->from(new Address(
+                        $this->getParameter('app.mail_from_address'),
+                        $this->getParameter('app.mail_from_name'),
+                    ))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('emails/registration/confirmation.html.twig')

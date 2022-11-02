@@ -17,6 +17,10 @@ class PinsController extends AbstractController
 
     public function index(PinRepository $pinRepository): Response
     {
+        // todo : pagination
+        // ...->paginate(Pin::NUM_ITEMS_PER_PAGE);
+
+
         // // // ordonne par date de creation descendante
         $pins = $pinRepository->findBy([], ['createdAt' => 'DESC']);
         return $this->render('pins/index.html.twig', compact('pins'));
