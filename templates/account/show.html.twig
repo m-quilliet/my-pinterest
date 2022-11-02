@@ -11,10 +11,15 @@
 
 
             <p class="mt-5 lead">{{ app.user.email }} </p>
+
+            <hr>
+
             <h2>{{ app.user.fullName }} </h2>
 
+            <p><small>&#x23F1; Compte crée depuis le : {{ app.user.createdAt|date('d/m/Y') }}</small></p>
+
             <p>
-                <a href="">Modifier mon compte</a> | <a href="">Changer mot de passe</a>
+                <a href="{{ path('app_account_edit') }}">Modifier mon compte</a> | <a href="">Changer mot de passe</a>
             </p>
         </div>
     </div>
