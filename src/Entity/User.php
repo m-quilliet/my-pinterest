@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="users")
  * @ORM\HasLifecycleCallbacks
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message= "Il existe déjà un compte avec cette adresse email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -29,13 +29,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message= 'Veuillez entrer votre prénom')
+     * @Assert\NotBlank (message="Veuillez entrer votre prénom")
+     * 
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message= 'Veuillez entrer votre nom')
+     * @Assert\NotBlank (message="Veuillez entrer votre nom")
      */
     private $lastName;
 
@@ -43,8 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank(message= 'Veuillez entrer votre email')
-     * @Assert\Email(message=" Entrer une adresse valide, s'il vous plait. ")
+     * @Assert\NotBlank (message="Veuillez entrer votre adresse email")
+     * @Assert\Email (message="Veuillez entrer un email valide")
      */
     private $email;
 
