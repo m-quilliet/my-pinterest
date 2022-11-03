@@ -18,6 +18,7 @@ class ChangePasswordFormType extends AbstractType
         if ($options['current_password_is_required']) {
             $builder
                 ->add('currentPassword', PasswordType::class, [
+                    'label' => 'Mot de passe actuel',
                     'attr' => ['autocomplete' => 'off'],
                     'constraints' => [
                         new NotBlank([
