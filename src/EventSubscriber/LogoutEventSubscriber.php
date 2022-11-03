@@ -18,7 +18,7 @@ class LogoutEventSubscriber implements EventSubscriberInterface
     {
         $event->getRequest()->getSession()->getFlashBag()->add(
             'success',
-            'Déconnecter avec succés.'
+            'À bientôt ' . $event->getToken()->getUser()->getFullName() . ' !'
         );
         $event->setResponse(new RedirectResponse($this->urlGenerator->generate('app_home')));
     }
