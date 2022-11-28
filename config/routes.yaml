@@ -16,11 +16,11 @@ app_pins_show:
 app_pins_edit:
   path: /pins/{id<\d+>}/edit
   controller: App\Controller\PinsController::edit
-  methods: POST|GET
+  methods: GET|PUT
 
 app_pins_delete:
   path: /pins/{id<\d+>}/delete
   controller: App\Controller\PinsController::delete
-  methods: POST|DELETE
+  methods: DELETE
 
 
