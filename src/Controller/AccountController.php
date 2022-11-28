@@ -26,7 +26,8 @@ class AccountController extends AbstractController
         return $this->render('account/show.html.twig');
     }
     /**
-     * @Route("/edit", name="app_account_edit", methods={"GET","POST"})
+     * @Route("/edit", name="app_account_edit", methods={"GET","PATCH"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, EntityManagerInterface $em): Response
     {
@@ -49,7 +50,8 @@ class AccountController extends AbstractController
         ]);
     }
     /**
-     * @Route("/change-password", name="app_account_change_password", methods={"GET","POST"})
+     * @Route("/change-password", name="app_account_change_password", methods={"GET","PATCH"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function changePassword(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $userPasswordHasher): Response
     {
